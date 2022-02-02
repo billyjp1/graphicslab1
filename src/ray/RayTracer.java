@@ -103,18 +103,20 @@ public class RayTracer {
 		double imgHeight = scene.getImage().getHeight();
 		double viewWidth = scene.getCamera().viewWidth;
 		double viewHeight = scene.getCamera().viewHeight;
-		double imgPosX = imgWidth / 2;
+		double imgPosX = viewWidth / 2;
 		double imgNegX = imgPosX * -1;
-		double imgPosY = imgHeight / 2;
+		double imgPosY = viewHeight / 2;
 		double imgNegY = imgPosY * -1;
 		
-		double uPos = imgNegX + (imgPosX - imgNegX) * (i + .5) / imgWidth;
-		double vPos = imgNegY + (imgPosY - imgNegY) * (j + .5) / imgHeight;
+		double pixelWidth = viewWidth / imgWidth;
+		double pixelHeight = viewHeight / imgHeight;
 		
+		double uPos = imgNegX + (pixelWidth) * (i + .5);
+		double vPos = imgNegY + (pixelHeight) * (j + .5);
 		Vector3 ray = new Vector3(scene.getCamera().viewPoint);
 		ray.scaleAdd(uPos, basis[0]);
 		ray.scaleAdd(vPos, basis[1]);
-		ray.scaleAdd(-1, basis[2]);
+		ray.scaleAdd(-scene.getCamera().projDistance, basis[2]);
 		return ray;
 	}
 	
