@@ -99,13 +99,23 @@ public class RayTracer {
 	 */
 	public static Vector3 computeRayDirection(Scene scene, Vector3[] basis, int i, int j) {
 		// TODO compute the ray direction
-		double imgPosX = scene.getImage().getWidth()/2;
+		double imgWidth = scene.getImage().getWidth();
+		double imgHeight = scene.getImage().getHeight();
+		double viewWidth = scene.getCamera().viewWidth;
+		double viewHeight = scene.getCamera().viewHeight;
+		double imgPosX = imgWidth / 2;
 		double imgNegX = imgPosX * -1;
-		double imgPosY = scene.getImage().getHeight()/2;
+		double imgPosY = imgHeight / 2;
 		double imgNegY = imgPosY * -1;
 		
+		double uPos = imgNegX + (imgPosX - imgNegX) * (i + .5) / imgWidth;
+		double vPos = imgNegY + (imgPosY - imgNegY) * (j + .5) / imgHeight;
 		
-		return new Vector3();
+		Vector3 ray = new Vector3(scene.getCamera().viewPoint);
+		ray.scaleAdd(uPos, basis[0]);
+		ray.scaleAdd(vPos, basis[1]);
+		ray.scaleAdd(-1, basis[2]);
+		return ray;
 	}
 	
 	/**
