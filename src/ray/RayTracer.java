@@ -1,8 +1,11 @@
 package ray;
 
+import ray.math.Point3;
 import ray.math.Vector3;
+import ray.surface.Surface;
 
 import java.io.File;
+import java.util.ArrayList;
 
 
 /**
@@ -142,7 +145,25 @@ public class RayTracer {
 		
 		// TODO: render the image by setting the color of each pixel in "image"
 		// Use your computeRayDirection helper function.
-		
+		Point3 origin = scene.getCamera().viewPoint;
+		Vector3 dirVec;
+		for (int i = 0; i < image.width; i++) {
+			for (int j = 0; j < image.height; j++) {
+				dirVec = computeRayDirection(scene, basis, i, j);
+				ArrayList<Surface> surfaces = scene.getGroup().getSurfaces();
+				double nearest = Double.POSITIVE_INFINITY;
+				Surface nearestSurface = surfaces.get(0);
+				for (int k = 0; k < surfaces.size(); k++) {
+					double check = surfaces.get(k).intersection(new Vector3(dirVec), new Point3(origin));
+					if (nearest > check && check > 0) {
+						nearest = check;
+						nearestSurface = surfaces.get(k);
+					}
+				}
+				
+				//Use light to color
+			}
+		}
 		
 		
 		// Output time

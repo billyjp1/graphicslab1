@@ -10,7 +10,7 @@ import ray.math.Vector3;
  *
  */
 public class Plane extends Surface {
-
+	
 	/* A point on the plane. */
 	protected final Point3 point = new Point3();
 	public void setPoint(Point3 point) { this.point.set(point); }
@@ -20,7 +20,19 @@ public class Plane extends Surface {
 	public void setNormal(Vector3 normal) { this.normal.set(normal); }
 	
 	public Plane() { }
+	
 
+	public double intersection(Vector3 ray, Point3 origin) {
+		double t = Double.POSITIVE_INFINITY;
+		//Vector3 oVec = new Vector3(origin);
+		double numer = normal.dot(new Vector3(point)) - normal.dot(new Vector3(origin));
+		double denom = normal.dot(ray);
+		if (denom != 0) {
+			t = numer/denom;
+		}
+		return t;
+	}
+	
 	/**
 	 * @see Object#toString()
 	 */

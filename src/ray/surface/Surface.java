@@ -1,6 +1,8 @@
 package ray.surface;
 
 import ray.material.Material;
+import ray.math.Point3;
+import ray.math.Vector3;
 
 /**
  * Abstract base class for all surfaces.  Provides access for shader and
@@ -14,5 +16,6 @@ public abstract class Surface {
 	protected Material material = Material.DEFAULT_MATERIAL;
 	public void setMaterial(Material material) { this.material = material; }
 	public Material getMaterial() { return material; }
+	public abstract double intersection(Vector3 ray, Point3 origin);
 	
 }

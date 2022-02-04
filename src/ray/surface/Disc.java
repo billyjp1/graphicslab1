@@ -1,5 +1,7 @@
 package ray.surface;
 
+import ray.math.Vector3;
+import ray.math.Point3;
 
 /**
  * Representation of a 2D disk by a center, radius and normal.
@@ -15,6 +17,17 @@ public class Disc extends Plane {
 	
 	public Disc() { }
 
+	public double intersection(Vector3 ray, Point3 origin) {
+		double t = Double.POSITIVE_INFINITY;
+		//Vector3 oVec = new Vector3(origin);
+		double numer = normal.dot(new Vector3(point)) - normal.dot(new Vector3(origin));
+		double denom = normal.dot(ray);
+		if (denom != 0 && radius >= point.distance(origin)) {
+			t = numer/denom;
+		}
+		return t;
+	}
+	
 	/**
 	 * @see Object#toString()
 	 */
