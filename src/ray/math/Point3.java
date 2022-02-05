@@ -76,7 +76,7 @@ public class Point3 extends Tuple3 {
    * @param other another point
    * @return the distance
    */
-  public double distance(Point3 other) {
+  public double distance(Tuple3 other) {
 
     double dx = (this.x - other.x);
     double dy = (this.y - other.y);

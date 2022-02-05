@@ -10,9 +10,8 @@
     <viewUp>1 0 0</viewUp>
   </camera>
   <image>200 200</image>
-  <light type="AmbientLight">
-    <intensity>1 1 1</intensity>
-  </light>
+  <light type="ConstantLight"/>
+
   <material name="yellow" type="Lambertian">
     <color>1 0.839 0.008</color>
   </material>

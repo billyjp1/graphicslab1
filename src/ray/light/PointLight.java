@@ -2,6 +2,7 @@ package ray.light;
 
 import ray.math.Color;
 import ray.math.Point3;
+import ray.surface.Surface;
 
 /**
  * This class represents a basic point light which is infinitely small and emits
@@ -30,5 +31,11 @@ public class PointLight extends Light {
 	 */
 	public String toString() {
 		return "point light: " + position + " " + intensity + " end";
+	}
+
+	@Override
+	public Color illuminate(Surface s) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

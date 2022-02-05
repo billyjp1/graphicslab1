@@ -30,7 +30,6 @@
     <normal>1 0 0</normal>
     <radius>1</radius>
   </surface>
-  <light type="AmbientLight">
-    <intensity>1 1 1</intensity>
-  </light>
+  <light type="ConstantLight"/>
+
 </scene>

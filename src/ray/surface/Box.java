@@ -1,6 +1,7 @@
 package ray.surface;
 
 import ray.math.Point3;
+import ray.math.Vector3;
 
 public class Box extends Surface {
 	
@@ -19,5 +20,17 @@ public class Box extends Surface {
 	 */
 	public String toString() {
 		return "box " + minPt + " " + maxPt + " " + material + " end";
+	}
+
+	@Override
+	public double intersection(Vector3 ray, Point3 origin) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Vector3 getNormal() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

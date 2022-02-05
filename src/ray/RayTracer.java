@@ -162,6 +162,9 @@ public class RayTracer {
 				}
 				
 				//Use light to color
+				if (nearest != Double.POSITIVE_INFINITY) {
+					image.setPixelColor(scene.getLights().get(0).illuminate(nearestSurface), i, j);
+				}
 			}
 		}
 		

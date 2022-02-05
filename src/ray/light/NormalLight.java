@@ -1,5 +1,8 @@
 package ray.light;
 
+import ray.math.Color;
+import ray.math.Vector3;
+import ray.surface.Surface;
 
 /**
  * This class represents a "normal" light which reveals the normal vector on the surface.
@@ -13,10 +16,15 @@ public class NormalLight extends Light {
 	 */
 	public NormalLight() { }
 	
+	public Color illuminate(Surface surf) {
+		Vector3 norm = surf.getNormal();
+		return new Color((norm.x + 1) / 2, (norm.y + 1) / 2, (norm.z + 1) / 2);
+	}
+	
 	/**
 	 * @see Object#toString()
 	 */
 	public String toString() {
 		return "normal light end";
-	}
+	}	
 }

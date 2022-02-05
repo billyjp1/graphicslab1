@@ -18,6 +18,7 @@ public class Plane extends Surface {
 	/* The normal vector. */
 	protected final Vector3 normal = new Vector3();
 	public void setNormal(Vector3 normal) { this.normal.set(normal); }
+	public Vector3 getNormal() { return this.normal; }
 	
 	public Plane() { }
 	

@@ -1,6 +1,7 @@
 package ray.light;
 
 import ray.math.Color;
+import ray.surface.Surface;
 
 /**
  * This class represents an ambient light which illuminates every surface the same 
@@ -25,6 +26,12 @@ public class AmbientLight extends Light {
 	public String toString() {
 		
 		return "ambient light: " + intensity + " end";
+	}
+
+	@Override
+	public Color illuminate(Surface s) {
+		// TODO Auto-generated method stub
+		return s.getMaterial().getColor();
 	}
 
 }

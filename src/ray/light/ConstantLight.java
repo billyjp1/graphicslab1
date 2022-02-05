@@ -1,6 +1,9 @@
 
 package ray.light;
 
+import ray.math.Color;
+import ray.surface.Surface;
+
 /**
  * This class represents a constant light source which reveals the surface color.
  *
@@ -13,6 +16,9 @@ public class ConstantLight extends Light {
 	 */
 	public ConstantLight() { }
 	
+	public Color illuminate(Surface surf) {
+		return surf.getMaterial().getColor();
+	}
 	/**
 	 * @see Object#toString()
 	 */

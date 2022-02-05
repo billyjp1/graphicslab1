@@ -24,4 +24,10 @@ public class Group extends Surface {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public Vector3 getNormal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
