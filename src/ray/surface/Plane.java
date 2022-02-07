@@ -24,11 +24,12 @@ public class Plane extends Surface {
 	
 
 	public double intersection(Vector3 ray, Point3 origin) {
-		double t = Double.POSITIVE_INFINITY;
+		double t = Double.POSITIVE_INFINITY; 
 		//Vector3 oVec = new Vector3(origin);
-		double numer = normal.dot(new Vector3(point)) - normal.dot(new Vector3(origin));
+		double numer = (normal.dot(new Vector3(point))) - (normal.dot(new Vector3(origin)));
 		double denom = normal.dot(ray);
 		if (denom != 0) {
+
 			t = numer/denom;
 		}
 		return t;

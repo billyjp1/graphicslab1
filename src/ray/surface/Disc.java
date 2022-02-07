@@ -18,7 +18,7 @@ public class Disc extends Plane {
 	public Disc() { }
 
 	public double intersection(Vector3 ray, Point3 origin) {
-		double t = Double.POSITIVE_INFINITY;
+		double t = Double.POSITIVE_INFINITY; 
 		double numer = normal.dot(new Vector3(point)) - normal.dot(new Vector3(origin));
 		double denom = normal.dot(ray);
 		if (denom != 0) {
