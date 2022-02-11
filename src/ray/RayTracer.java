@@ -119,7 +119,7 @@ public class RayTracer {
 		
 		double uPos = imgNegX + (pixelWidth) * (i + .5);
 		double vPos = imgNegY + (pixelHeight) * (j + .5);
-		Vector3 ray = new Vector3(scene.getCamera().viewPoint);
+		Vector3 ray = new Vector3();//scene.getCamera().viewPoint);
 		ray.scaleAdd(uPos, basis[0]);
 		ray.scaleAdd(vPos, basis[1]);
 		ray.scaleAdd(-scene.getCamera().projDistance, basis[2]);
@@ -159,12 +159,11 @@ public class RayTracer {
 				for (int k = 0; k < surfaces.size(); k++) {
 					double check = surfaces.get(k).intersection(new Vector3(dirVec), new Point3(origin));
 					if (nearest > check && check > 0) { // && check > 0
-
 						nearest = check;
 						nearestSurface = surfaces.get(k);
 					}
 //if (check < 0) image.setPixelColor(new Color(1,1,1), i, j);
-				}
+				} 
 				
 				//Use light to color
 				if (nearest != Double.POSITIVE_INFINITY) {
