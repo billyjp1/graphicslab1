@@ -15,7 +15,7 @@ public abstract class Surface {
 	/** Shader to be used to shade this surface. */
 	protected Material material = Material.DEFAULT_MATERIAL;
 	public void setMaterial(Material material) { this.material = material; }
-	public Material getMaterial() { return material; }
+	public Material getMaterial() { return material; } 
 	public abstract double intersection(Vector3 ray, Point3 origin);
 	public abstract Vector3 getNormal();
 }

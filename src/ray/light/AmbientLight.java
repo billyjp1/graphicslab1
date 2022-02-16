@@ -31,7 +31,9 @@ public class AmbientLight extends Light {
 	@Override
 	public Color illuminate(Surface s) {
 		// TODO Auto-generated method stub
-		return s.getMaterial().getColor();
+		Color scaledCol = new Color(s.getMaterial().getColor());
+		scaledCol.scale(intensity);
+		return scaledCol;
 	}
 
 }

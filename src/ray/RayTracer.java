@@ -1,10 +1,7 @@
 package ray;
 
-import ray.math.Color;
 import ray.math.Point3;
 import ray.math.Vector3;
-import ray.surface.Disc;
-import ray.surface.Plane;
 import ray.surface.Surface;
 
 import java.io.File;
@@ -113,16 +110,21 @@ public class RayTracer {
 		double imgNegX = imgPosX * -1;
 		double imgPosY = viewHeight / 2;
 		double imgNegY = imgPosY * -1;
-		
+
 		double pixelWidth = viewWidth / imgWidth;
 		double pixelHeight = viewHeight / imgHeight;
 		
 		double uPos = imgNegX + (pixelWidth) * (i + .5);
 		double vPos = imgNegY + (pixelHeight) * (j + .5);
 		Vector3 ray = new Vector3();//scene.getCamera().viewPoint);
+
+		Vector3 viewDir = new Vector3(scene.getCamera().viewDir);
+		viewDir.normalize();
+		
 		ray.scaleAdd(uPos, basis[0]);
 		ray.scaleAdd(vPos, basis[1]);
-		ray.scaleAdd(-scene.getCamera().projDistance, basis[2]);
+		ray.scaleAdd(scene.getCamera().projDistance, viewDir);	
+		//ray.scaleAdd(-scene.getCamera().projDistance, basis[2]);
 		return ray;
 	}
 	

@@ -25,6 +25,7 @@ public class Box extends Surface {
 	@Override
 	public double intersection(Vector3 ray, Point3 origin) {
 		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 

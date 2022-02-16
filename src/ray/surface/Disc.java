@@ -23,7 +23,7 @@ public class Disc extends Plane {
 		double denom = normal.dot(ray);
 		if (denom != 0) {
 			t = numer/denom;
-			ray.scale(t);
+			ray.scale(t); 
 			origin.add(ray);
 			if (point.distance(origin) > radius) {
 				return Double.POSITIVE_INFINITY;
