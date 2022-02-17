@@ -31,8 +31,27 @@ public class Sphere extends Surface {
 	@Override
 	public double intersection(Vector3 ray, Point3 origin) {
 		// TODO Auto-generated method stub
+		double t = Double.POSITIVE_INFINITY;
 		
-		return 0;
+		Vector3 EminC = new Vector3();
+		EminC.sub(origin, center);
+		double underSquare = ray.dot(EminC) * ray.dot(EminC);
+		double dDot = ray.dot(ray);
+		double ecDot = EminC.dot(EminC) - (radius * radius);
+		underSquare -= (dDot * ecDot);
+		if (underSquare >= 0 && dDot != 0) {
+			double numer = Math.sqrt(underSquare);
+			double num1 = (-1*ray.dot(EminC)) + numer;
+			double num2 = (-1*ray.dot(EminC)) + numer;
+			num1 /= dDot;
+			num2 /= dDot;
+			if (num1 < num2 && num1 > 0) {
+				t = num1;
+			} else if (num2 > 0) {
+				t = num2;
+			}
+		}
+		return t;
 	}
 
 	@Override
