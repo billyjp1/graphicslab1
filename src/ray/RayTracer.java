@@ -160,11 +160,10 @@ public class RayTracer {
 				Surface nearestSurface = surfaces.get(0);
 				for (int k = 0; k < surfaces.size(); k++) {
 					double check = surfaces.get(k).intersection(new Vector3(dirVec), new Point3(origin));
-					if (nearest > check && check > 0) { // && check > 0
+					if (nearest > check && check > 0) {
 						nearest = check;
 						nearestSurface = surfaces.get(k);
 					}
-//if (check < 0) image.setPixelColor(new Color(1,1,1), i, j);
 				} 
 				
 				//Use light to color

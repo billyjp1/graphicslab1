@@ -42,12 +42,12 @@ public class Sphere extends Surface {
 		if (underSquare >= 0 && dDot != 0) {
 			double numer = Math.sqrt(underSquare);
 			double num1 = (-1*ray.dot(EminC)) + numer;
-			double num2 = (-1*ray.dot(EminC)) + numer;
+			double num2 = (-1*ray.dot(EminC)) - numer;
 			num1 /= dDot;
 			num2 /= dDot;
-			if (num1 < num2 && num1 > 0) {
+			if ((num1 < num2 || num2 < 0) && num1 >= 0) {
 				t = num1;
-			} else if (num2 > 0) {
+			} else if (num2 >= 0) {
 				t = num2;
 			}
 		}
@@ -59,8 +59,9 @@ public class Sphere extends Surface {
 		// TODO Auto-generated method stub
 		Vector3 norm = new Vector3();
 		norm.sub(p, center);
-		norm.scale(2);
-		norm.normalize();
+		norm.scale(1/radius);
+//		norm.scale(2);
+//		norm.normalize();
 		return norm;
 	}
 
