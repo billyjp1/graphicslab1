@@ -2,6 +2,8 @@ package ray.light;
 
 import ray.math.Color;
 import ray.math.Point3;
+import ray.math.Vector3;
+import ray.surface.HitRecord;
 import ray.surface.Surface;
 
 /**
@@ -34,8 +36,19 @@ public class PointLight extends Light {
 	}
 
 	@Override
-	public Color illuminate(Surface s, Point3 p) {
+	public Color illuminate(Vector3 ray, HitRecord hr) {
 		// TODO Auto-generated method stub
+		Vector3 x = new Vector3(); 
+		x.scaleAdd(hr.t, ray);
+		double r = position.distance(x);
+		Vector3 l = new Vector3();
+		l.sub(position, new Point3(x));
+		l.scale(1/r);
+		Vector3 n = hr.normal;
+		Color E = new Color(intensity);
+		E.scale(Math.max(0, n.dot(l)));
+		E.scale(1/(r*r));
+		//Color k = hr.surface.getMaterial().evaluate();
 		return null;
 	}
 }

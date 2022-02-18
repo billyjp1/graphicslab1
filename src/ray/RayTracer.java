@@ -2,6 +2,7 @@ package ray;
 
 import ray.math.Point3;
 import ray.math.Vector3;
+import ray.surface.HitRecord;
 import ray.surface.Surface;
 
 import java.io.File;
@@ -156,22 +157,27 @@ public class RayTracer {
 			for (int j = 0; j < image.height; j++) {
 				dirVec = computeRayDirection(scene, basis, i, j);
 				ArrayList<Surface> surfaces = scene.getGroup().getSurfaces();
-				double nearest = Double.POSITIVE_INFINITY;
-				Surface nearestSurface = surfaces.get(0);
+				//double nearest = Double.POSITIVE_INFINITY;
+				//Surface nearestSurface = surfaces.get(0);
+				HitRecord nearest = new HitRecord();
 				for (int k = 0; k < surfaces.size(); k++) {
-					double check = surfaces.get(k).intersection(new Vector3(dirVec), new Point3(origin));
-					if (nearest > check && check > 0) {
-						nearest = check;
-						nearestSurface = surfaces.get(k);
+					//double check = surfaces.get(k).intersection(new Vector3(dirVec), new Point3(origin));
+					HitRecord check = new HitRecord();
+					check.t = surfaces.get(k).intersection(new Vector3(dirVec), new Point3(origin));
+					if (nearest.t > check.t && check.t > 0) {
+						nearest.t = check.t;
+						nearest.surface = surfaces.get(k);
+						//nearestSurface = surfaces.get(k);
 					}
 				} 
 				
 				//Use light to color
-				if (nearest != Double.POSITIVE_INFINITY) {
+				if (nearest.t != Double.POSITIVE_INFINITY) {
 					Point3 p = new Point3(dirVec);
-					p.scale(nearest);
+					p.scale(nearest.t);
 					p.add(origin);
-					image.setPixelColor(scene.getLights().get(0).illuminate(nearestSurface, p), i, j);
+					nearest.intersect = p;
+					image.setPixelColor(scene.getLights().get(0).illuminate(nearest.surface, p), i, j);
 				}
 			}
 		}

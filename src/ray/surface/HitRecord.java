@@ -3,15 +3,22 @@ import ray.math.Point3;
 import ray.math.Vector3;
 
 public class HitRecord {
-	protected Surface surface;
-	protected double point;
-	protected Vector3 normal;
-	protected double t;
+	public Surface surface;
+	public Vector3 normal;
+	protected Vector3 dir;
+	public double t;
+	public Point3 intersect;
 	
-	public HitRecord(Surface s, double hitPoint, Vector3 normal) {
+	public HitRecord() {
+		this.surface = null;
+		this.normal = null;
+		this.t = Double.POSITIVE_INFINITY;
+	}
+	
+	public HitRecord(Surface s, double t, Vector3 normal, Vector3 ray) {
 		this.surface = s;
-		this.point = hitPoint;
-		this.normal = normal;
+		this.normal = normal; 
+		this.dir = ray;
 	}
 	
 	public double isHit(Vector3 ray, Point3 origin, double closest) {
