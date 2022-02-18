@@ -2,6 +2,7 @@ package ray.light;
 
 import ray.surface.Surface;
 import ray.math.Color;
+import ray.math.Point3;
 
 /**
  * This is the abstract parent class which all lights are child of.
@@ -10,5 +11,5 @@ import ray.math.Color;
  * @author parryrm
  */
 public abstract class Light {
-	public abstract Color illuminate(Surface s);
+	public abstract Color illuminate(Surface s, Point3 p);
 }

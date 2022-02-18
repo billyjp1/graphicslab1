@@ -2,6 +2,7 @@
 package ray.light;
 
 import ray.math.Color;
+import ray.math.Point3;
 import ray.surface.Surface;
 
 /**
@@ -16,7 +17,7 @@ public class ConstantLight extends Light {
 	 */
 	public ConstantLight() { }
 	
-	public Color illuminate(Surface surf) {
+	public Color illuminate(Surface surf, Point3 p) {
 		return surf.getMaterial().getColor();
 	}
 	/**

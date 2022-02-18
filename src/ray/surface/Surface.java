@@ -17,5 +17,5 @@ public abstract class Surface {
 	public void setMaterial(Material material) { this.material = material; }
 	public Material getMaterial() { return material; } 
 	public abstract double intersection(Vector3 ray, Point3 origin);
-	public abstract Vector3 getNormal();
+	public abstract Vector3 getNormal(Point3 p);
 }

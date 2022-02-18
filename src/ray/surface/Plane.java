@@ -18,7 +18,7 @@ public class Plane extends Surface {
 	/* The normal vector. */
 	protected final Vector3 normal = new Vector3();
 	public void setNormal(Vector3 normal) { this.normal.set(normal); }
-	public Vector3 getNormal() { return this.normal; }
+	public Vector3 getNormal(Point3 p) { return this.normal; }
 	
 	public Plane() { }
 	
@@ -29,7 +29,6 @@ public class Plane extends Surface {
 		double numer = (normal.dot(new Vector3(point))) - (normal.dot(new Vector3(origin)));
 		double denom = normal.dot(ray);
 		if (denom != 0) {
-
 			t = numer/denom;
 		}
 		return t;

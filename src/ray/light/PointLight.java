@@ -34,7 +34,7 @@ public class PointLight extends Light {
 	}
 
 	@Override
-	public Color illuminate(Surface s) {
+	public Color illuminate(Surface s, Point3 p) {
 		// TODO Auto-generated method stub
 		return null;
 	}

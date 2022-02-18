@@ -55,9 +55,14 @@ public class Sphere extends Surface {
 	}
 
 	@Override
-	public Vector3 getNormal() {
+	public Vector3 getNormal(Point3 p) {
 		// TODO Auto-generated method stub
-		return null;
+		Vector3 norm = new Vector3();
+		norm.sub(p, center);
+		norm.scale(2);
+		norm.normalize();
+		return norm;
 	}
-	
+
+
 }

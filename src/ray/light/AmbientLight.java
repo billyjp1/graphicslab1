@@ -1,6 +1,7 @@
 package ray.light;
 
 import ray.math.Color;
+import ray.math.Point3;
 import ray.surface.Surface;
 
 /**
@@ -29,7 +30,7 @@ public class AmbientLight extends Light {
 	}
 
 	@Override
-	public Color illuminate(Surface s) {
+	public Color illuminate(Surface s, Point3 p) {
 		// TODO Auto-generated method stub
 		Color scaledCol = new Color(s.getMaterial().getColor());
 		scaledCol.scale(intensity);

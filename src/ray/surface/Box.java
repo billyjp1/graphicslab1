@@ -29,8 +29,19 @@ public class Box extends Surface {
 		return 0;
 	}
 
+	public double planeIntersection(Vector3 ray, Point3 origin, Point3 point) {
+		double t = Double.POSITIVE_INFINITY;
+		Vector3 normal = getNormal(point);
+		double numer = (normal.dot(new Vector3(point))) - (normal.dot(new Vector3(origin)));
+		double denom = normal.dot(ray);
+		if (denom != 0) {
+			t = numer/denom;
+		}
+		return t;
+	}
+	
 	@Override
-	public Vector3 getNormal() {
+	public Vector3 getNormal(Point3 p) {
 		// TODO Auto-generated method stub
 		return null;
 	}

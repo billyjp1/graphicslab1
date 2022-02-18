@@ -26,7 +26,7 @@ public class Group extends Surface {
 	}
 
 	@Override
-	public Vector3 getNormal() {
+	public Vector3 getNormal(Point3 p) {
 		// TODO Auto-generated method stub
 		return null;
 	}

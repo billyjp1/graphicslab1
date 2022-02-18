@@ -44,6 +44,10 @@ public class Point3 extends Tuple3 {
     super(newTuple.x, newTuple.y, newTuple.z);
   }
 
+  public Point3(Vector3 newTuple) {
+	    super(newTuple.x, newTuple.y, newTuple.z);
+  }  
+  
   /**
    * The explicit constructor.  This is the only constructor with any real
    * code in it.  Values should be set here, and any variables that need to
@@ -90,7 +94,7 @@ public class Point3 extends Tuple3 {
    * Add a Vector3 to this Point3
    * @param op1 the Vector3 to add
    */
-  public void add(Vector3 vector) {
+  public void add(Tuple3 vector) {
 
     this.x += vector.x;
     this.y += vector.y;
